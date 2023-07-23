@@ -51,7 +51,6 @@ class MainActivity : AppCompatActivity() {
                 val sys = jsonObj.getJSONObject("sys")
                 val wind = jsonObj.getJSONObject("wind")
                 val weather = jsonObj.getJSONArray("weather").getJSONObject(0)
-
                 val updatedAt:Long = jsonObj.getLong("dt")
                 val updatedAtText = "Updated at: "+ SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.ENGLISH).format(Date(updatedAt*1000))
                 val temp = main.getString("temp")+"°C"
@@ -75,11 +74,8 @@ class MainActivity : AppCompatActivity() {
                 findViewById<TextView>(R.id.wind).text = windSpeed
                 findViewById<TextView>(R.id.pressure).text = pressure
                 findViewById<TextView>(R.id.humidity).text = humidity
-
-                /* Views populated, Hiding the loader, Showing the main design */
                 findViewById<ProgressBar>(R.id.progressbar).visibility = View.GONE
                 findViewById<RelativeLayout>(R.id.processLayout).visibility = View.VISIBLE
-
             } catch (e: Exception) {
                 findViewById<ProgressBar>(R.id.progressbar).visibility = View.GONE
                 findViewById<TextView>(R.id.errorText).visibility = View.VISIBLE
