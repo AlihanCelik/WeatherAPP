@@ -24,12 +24,10 @@ class MainActivity : AppCompatActivity() {
     inner class weatherTask() : AsyncTask<String, Void, String>() {
         override fun onPreExecute() {
             super.onPreExecute()
-            /* Showing the ProgressBar, Making the main design GONE */
             findViewById<ProgressBar>(R.id.progressbar).visibility = View.VISIBLE
             findViewById<RelativeLayout>(R.id.processLayout).visibility = View.GONE
             findViewById<TextView>(R.id.errorText).visibility = View.GONE
         }
-
         override fun doInBackground(vararg params: String?): String? {
             var response:String?
             try{
@@ -41,11 +39,9 @@ class MainActivity : AppCompatActivity() {
             }
             return response
         }
-
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
             try {
-                /* Extracting JSON returns from the API */
                 val jsonObj = JSONObject(result)
                 val main = jsonObj.getJSONObject("main")
                 val sys = jsonObj.getJSONObject("sys")
