@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         weatherTask().execute()
-
     }
     inner class weatherTask() : AsyncTask<String, Void, String>() {
         override fun onPreExecute() {
